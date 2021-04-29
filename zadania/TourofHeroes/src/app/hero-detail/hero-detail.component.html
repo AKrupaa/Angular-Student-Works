@@ -1,0 +1,12 @@
+<!-- When selectedHero is undefined, the ngIf removes the hero detail from the DOM. There are no selectedHero bindings to consider. -->
+<div *ngIf="hero">
+
+  <h2>{{hero.name}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>

@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+
+<div style="padding-top: 5em">
+  <main class="container">
+    <div class="starter-template text-center py-5 px-3">
+      <h1>Event</h1>
+      <!-- <p class="lead">
+        Use this document as a way to quickly start any new project.<br />
+        All you get is this text and a mostly barebones HTML document.
+      </p> -->
+    </div>
+
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="ui form error">
+      <div class="field">
+        <label>Login</label>
+        <input
+          #eventName
+          type="text"
+          name="Login"
+          placeholder="login"
+          formControlName="login"
+          required
+          [class.is-invalid]="
+            accountForm.get('login').invalid && accountForm.get('login').touched
+          "
+        />
+      </div>
+
+      <div
+        class="ui error message"
+        *ngIf="
+          (getLoginForm.invalid && getLoginForm.touched) || getLoginForm.dirty
+        "
+      >
+        <div class="header">Action Forbidden</div>
+        <p>You can not change your Login!</p>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input
+          #eventDescription
+          type="password"
+          name="password"
+          placeholder="password"
+          formControlName="password"
+          required
+          [class.is-invalid]="
+            accountForm.get('password').invalid &&
+            accountForm.get('password').touched
+          "
+        />
+      </div>
+
+      <div
+        class="ui error message"
+        *ngIf="
+          (getPasswordForm.invalid && getPasswordForm.touched)
+        "
+      >
+        <div class="header">Action Forbidden</div>
+        <p>Password must be 6 character length!</p>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!accountForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </main>
+</div>

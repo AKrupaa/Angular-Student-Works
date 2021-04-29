@@ -1,0 +1,130 @@
+<app-navbar></app-navbar>
+
+<div style="padding-top: 5em">
+  <main class="container">
+    <div class="starter-template text-center py-5 px-3">
+      <h1>Event</h1>
+      <!-- <p class="lead">
+        Use this document as a way to quickly start any new project.<br />
+        All you get is this text and a mostly barebones HTML document.
+      </p> -->
+    </div>
+
+    <br />
+
+    <div class="ui list">
+      <div class="item">
+        <i class="futbol icon"></i>
+        <div class="content">
+          <div class="header">Events</div>
+          <div class="description">Available Events</div>
+          <div class="list">
+            <!--  -->
+            <div class="item" *ngFor="let event of eventList">
+              <div class="right floated content">
+                <!-- <div class="ui button" (click)="buyTicket(event.id)">
+                  Show more
+                </div> -->
+                <!-- <div class="right floated content"> -->
+                <!-- <div class="ui button" (click)="editAccount(account.id)">
+                    Edit
+                  </div> -->
+                <div class="ui buttons">
+                  <button
+                    class="ui negative button"
+                    (click)="deleteEvent(event.id)"
+                  >
+                    Delete
+                  </button>
+                  <div class="or"></div>
+                  <button
+                    class="ui positive button"
+                    (click)="buyTicket(event.id)"
+                  >
+                    Show more
+                  </button>
+                </div>
+              </div>
+              <i class="star icon"></i>
+              <div class="content">
+                <div class="header">
+                  <!-- ID {{ event.id }} -->
+                  <!-- <div class="header">ID <input [(ngModel)]="event.id"/></div> -->
+                  {{ event.name }}
+                  <div class="description">{{ event.description }}</div>
+                  <br />
+                  <!-- <div class="description">Name <input [(ngModel)]="event.name"/></div> -->
+                  <!-- <div class="description">
+
+                  </div> -->
+                  <!-- <div class="description">
+                  Description <input [(ngModel)]="event.description"/>
+                </div> -->
+                </div>
+              </div>
+              <!--  -->
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="ui form">
+      <div class="field">
+        <label>Name</label>
+        <input
+          #eventName
+          type="text"
+          name="Name"
+          placeholder="Name"
+          formControlName="name"
+          required
+        />
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input
+          #eventDescription
+          type="text"
+          name="Description"
+          placeholder="Description"
+          formControlName="description"
+          required
+        />
+      </div>
+      <div class="field">
+        <label>How many tickets?</label>
+        <input
+          #howManyTickets
+          type="number"
+          name="howManyTickets"
+          placeholder="howManyTickets"
+          formControlName="howManyTickets"
+          required
+        />
+      </div>
+      <div class="field">
+        <label>Price</label>
+        <input
+          #eventPrice
+          type="number"
+          name="Price"
+          placeholder="Price"
+          formControlName="price"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!eventForm.valid"
+      >
+        Dodaj event
+      </button>
+    </form>
+  </main>
+</div>

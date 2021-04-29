@@ -1,0 +1,85 @@
+<!-- <nav
+  class="navbar navbar-expand-lg navbar-light fixed-top border-bottom shadow-sm w-100"
+  style="background-color: #e3f2fd"
+>
+  <p class="h5 my-0 me-md-auto fw-normal">Bilety</p>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">
+          Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/accounts">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/events">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tickets">Tickets</a>
+      </li>
+    </ul>
+
+    <button class="button align-right">lalalal</button>
+  </div>
+</nav> -->
+<nav
+  class="navbar navbar-expand-md navbar-light fixed-top bg-light border-bottom shadow-sm"
+>
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">
+          Home <span class="sr-only"></span
+        ></a>
+      </li>
+
+      <li class="nav-item" *ngIf="isLogged()">
+        <a class="nav-link" routerLink="/accounts">Account</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged()">
+        <a class="nav-link" routerLink="/events">Events</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged()">
+        <a class="nav-link" routerLink="/tickets">Tickets</a>
+      </li>
+    </ul>
+    <div *ngIf="!isLogged()">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signUp">Register</a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="isLogged()">
+      <ul class="navbar-nav">
+        <li><a class="nav-link">Welcome {{ who }}</a></li>
+        <li><a class="nav-link" routerLink="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

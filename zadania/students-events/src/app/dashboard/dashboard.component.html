@@ -1,0 +1,27 @@
+
+<button (click)="onClick()">(click)</button>
+<button (click)="onClick123()">(click)</button>
+
+{{this.text}}
+
+<!-- [ngStyle]="{'background-color':student.id % 2 === 0 ? 'red' : 'green' }" -->
+
+<div *ngIf="pressedButton">
+  <ul>
+    <li *ngFor="let student of students; let index = index; let first = first"
+    (dragend)="onDragEnd(student)">
+      id: {{ student.id }} name: {{ student.name }}
+    </li>
+  </ul>
+</div>
+
+<div [ngStyle]="myStyles">
+  Enter your name:
+  <input
+    #name
+    type="text"
+    (keyup.enter)="onKeyUpEnter(name.value)"
+    (mouseover)="onMouseOver()"
+    (mouseout)="onMouseOut()"
+  />
+</div>
